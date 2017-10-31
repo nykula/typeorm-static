@@ -11,11 +11,6 @@
     "noUnusedParameters": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "declaration": true,
-    "baseUrl": "src/types",
-    "typeRoots": [
-      "node_modules/@types",
-      "src/types"
-    ]
+    "declaration": true
   }
 }
