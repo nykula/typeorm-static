@@ -1,7 +1,7 @@
 {
   "name": "typeorm-static",
   "description": "Static TypeORM connection using env vars",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "out/index",
   "typings": "out/index",
   "repository": "https://github.com/makepost/typeorm-static",
