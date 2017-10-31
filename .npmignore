@@ -1,0 +1,11 @@
+.vscode/
+src/
+.editorconfig
+.env
+.gitattributes
+.gitignore
+db.sqlite3
+package-lock.json
+tsconfig.json
+tslint.json
+yarn.lock
