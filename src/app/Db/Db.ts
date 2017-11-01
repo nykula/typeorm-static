@@ -26,7 +26,7 @@ export class Db {
 
       entities,
 
-      extra: JSON.parse(process.env.TYPEORM_DRIVER_EXTRA || ""),
+      extra: JSON.parse(process.env.TYPEORM_DRIVER_EXTRA || "{}"),
 
       host: process.env.TYPEORM_HOST,
 

@@ -16,14 +16,31 @@ Install:
 yarn add @types/dotenv dotenv reflect-metadata typeorm typeorm-static
 ```
 
-Configure:
+Configure SQLite:
 
 ```bash
+yarn add sqlite3
+
 cat > .env <<EOF
 TYPEORM_DATABASE=db.sqlite3
-TYPEORM_DRIVER_EXTRA={}
 TYPEORM_DRIVER_TYPE=sqlite
 TYPEORM_LOGGING=all
+EOF
+```
+
+Or PostgreSQL:
+
+```bash
+yarn add pg
+
+cat > .env <<EOF
+TYPEORM_DRIVER_TYPE=postgres
+TYPEORM_DRIVER_EXTRA={"ssl": false}
+TYPEORM_HOST=localhost
+TYPEORM_USERNAME=user
+TYPEORM_PASSWORD=1
+TYPEORM_DATABASE=user
+TYPEORM_LOGGING=
 EOF
 ```
 
@@ -44,16 +61,20 @@ const { config } = require("dotenv");
 const { join } = require("path");
 
 config({ path: join(__dirname, "..", ".env") });
+// ...
 ```
 
 ```typescript
 // src/domain/Foobar/Foobar.ts
 
-import { Entity } from "typeorm";
-import { AbstractEntity } from "typeorm-static";
+import { Column, Entity } from "typeorm";
+import { AbstractEntity, Bigint } from "typeorm-static";
 
 @Entity()
-export class Foobar extends AbstractEntity { }
+export class Foobar extends AbstractEntity {
+  @Column("bigint", { transformer: Bigint /* Ensure number in postgres. */ })
+  public createdAt: number;
+}
 ```
 
 ```typescript
@@ -67,6 +88,7 @@ export class FoobarService {
   public repository = Db.connection.getRepository(Foobar);
 
   public async save(foobar: Foobar) {
+    foobar.createdAt = Date.now();
     foobar.id = Id();
     foobar = await this.repository.save(foobar);
     return foobar;
@@ -93,7 +115,7 @@ describe("FoobarService", () => {
     let foobar: Foobar = {};
     foobar = await foobarService.save(foobar);
     console.assert(foobar.id);
-  })
+  });
 });
 ```
 

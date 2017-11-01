@@ -8,7 +8,7 @@ describe("Db", () => {
 
     await Db.createTestConnection();
     let repository = Db.connection.getRepository(Foobar);
-    await repository.save({ id });
+    await repository.save({ createdAt: Date.now(), id });
 
     await Db.createTestConnection();
     repository = Db.connection.getRepository(Foobar);
@@ -21,7 +21,7 @@ describe("Db", () => {
 
     await Db.createTestConnection();
     let repository = Db.connection.getRepository(Foobar);
-    await repository.save({ id });
+    await repository.save({ createdAt: Date.now(), id });
 
     await Db.createConnection();
     repository = Db.connection.getRepository(Foobar);
