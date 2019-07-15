@@ -2,42 +2,33 @@
   "name": "typeorm-static",
   "description": "Static TypeORM connection using env vars",
   "version": "1.1.0",
-  "main": "out/index",
-  "typings": "out/index",
-  "repository": "https://github.com/makepost/typeorm-static",
-  "author": "makepost",
-  "license": "MIT",
-  "devDependencies": {
-    "@types/dotenv": "^4.0.2",
-    "@types/mocha": "^2.2.44",
-    "dotenv": "^4.0.0",
-    "mocha": "^4.0.1",
-    "nyc": "^11.2.1",
-    "pre-commit": "^1.2.2",
-    "reflect-metadata": "^0.1.10",
-    "sqlite3": "^3.1.13",
-    "tslint": "^5.8.0",
-    "typeorm": "^0.1.1",
-    "typescript": "^2.6.1"
-  },
+  "main": "typeormstatic",
+  "typings": "typeormstatic",
+  "repository": "https://github.com/nykula/typeorm-static",
+  "author": "Denys Nykula <nykula@ukr.net>",
+  "license": "0BSD",
   "dependencies": {
-    "@types/node": "^8.0.47",
-    "@types/shortid": "^0.0.29",
+    "@types/node": "^12.6.2",
+    "@types/shortid": "0.0.29",
     "shortid": "^2.2.8",
-    "source-map-support": "^0.5.0"
+    "source-map-support": "^0.5.12"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "dotenv": "^8.0.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.18.2",
+    "reflect-metadata": "^0.1.13",
+    "sqlite3": "^4.0.9",
+    "typeorm": "^0.2.18",
+    "typescript": "^3.5.3"
   },
   "peerDependencies": {
-    "typeorm": "^0.1.1"
+    "typeorm": "^0.2.18"
   },
   "scripts": {
-    "coverage": "nyc -a --eager -n 'out/**/*.js' -n 'src/**/*.ts' -r json -r html npm test",
-    "format": "tslint --fix 'src/**/*.ts'",
-    "lint": "tslint 'src/**/*.ts'",
-    "prepare": "tsc -p tsconfig.json",
-    "test": "node --harmony node_modules/.bin/_mocha --bail -u tdd --timeout 999999 --colors -r dotenv/config -r reflect-metadata -r source-map-support/register 'out/**/*.test.js'"
-  },
-  "pre-commit": [
-    "lint",
-    "prepare"
-  ]
+    "format": "prettier --write *.ts && npm test",
+    "prepare": "tsc",
+    "test": "tsc && node db.test && node id.test && prettier -c *.ts"
+  }
 }

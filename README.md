@@ -5,7 +5,6 @@ Static TypeORM connection using env vars.
 ## Environment
 
 - https://nodejs.org/en/download/
-- https://yarnpkg.com/en/docs/install
 - https://code.visualstudio.com/Download
 
 ## Usage
@@ -13,15 +12,14 @@ Static TypeORM connection using env vars.
 Install:
 
 ```bash
-yarn add @types/dotenv dotenv reflect-metadata typeorm typeorm-static
+npm i @types/dotenv dotenv reflect-metadata typeorm typeorm-static
 ```
 
 Configure SQLite:
 
 ```bash
-yarn add sqlite3
-
-cat > .env <<EOF
+npm i sqlite3
+cat >.env <<EOF
 TYPEORM_DATABASE=db.sqlite3
 TYPEORM_DRIVER_TYPE=sqlite
 TYPEORM_LOGGING=all
@@ -31,9 +29,8 @@ EOF
 Or PostgreSQL:
 
 ```bash
-yarn add pg
-
-cat > .env <<EOF
+npm i pg
+cat >.env <<EOF
 TYPEORM_DRIVER_TYPE=postgres
 TYPEORM_DRIVER_EXTRA={"ssl": false}
 TYPEORM_HOST=localhost
@@ -122,14 +119,12 @@ describe("FoobarService", () => {
 ## Develop
 
 ```bash
-git clone https://github.com/makepost/typeorm-static
+git clone https://github.com/nykula/typeorm-static
 cd typeorm-static
-yarn
-yarn prepare
-yarn test
-yarn coverage
+npm i
+npm test
 ```
 
 ## License
 
-MIT
+[0BSD](LICENSE.md), public domain equivalent.

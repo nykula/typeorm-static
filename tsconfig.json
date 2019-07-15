@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es2017",
     "module": "commonjs",
-    "outDir": "./out",
+    "outDir": ".",
     "sourceMap": true,
     "strict": true,
     "noImplicitAny": true,
@@ -12,5 +12,12 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "declaration": true
-  }
+  },
+  "exclude": [
+    "*.js",
+    "node_modules"
+  ],
+  "include": [
+    "*.ts"
+  ]
 }
