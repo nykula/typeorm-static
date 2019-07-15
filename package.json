@@ -1,7 +1,7 @@
 {
   "name": "typeorm-static",
   "description": "Static TypeORM connection using env vars",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "typeormstatic",
   "typings": "typeormstatic",
   "repository": "https://github.com/nykula/typeorm-static",
